@@ -52,15 +52,12 @@ const SearchRepositories = () => {
   }, [searchValue])
 
   useEffect(() => {
-    //focus on input if command + k is pressed
     const handleKeyPress = e => {
-      if (e.metaKey && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         document.querySelector('input').focus()
       }
     }
-    //listen for the event
     window.addEventListener('keydown', handleKeyPress)
-    //add dependencies if any
     return () => window.removeEventListener('keydown', handleKeyPress)
   },[])
 
