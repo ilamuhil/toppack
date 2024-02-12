@@ -20,26 +20,22 @@ The application is implemented using React for the frontend and Tailwind CSS for
 
 The following functionalities have been implemented along with unit test cases:
 
-1. **Parse package.json file:** Unit tests have been written to ensure correct parsing of the `package.json` file.
+1. **Search repositories by keywords:** User is able to search through the repository and the app performs a debounced search on the github public repositories
 
-2. **Search repositories by keywords:** Unit tests are in place to validate the search functionality and ensure the correct listing of repositories based on keywords.
+2. **Importing repository:** If the search is not returning any results then appropriate message is displayed. Similary appropriate error alerts are displayed if there is no `package.json` file or the file does not contain any dependencies. Loading states are handled as well. Once the imports are complete the import button is disabled and the listed repo changes font color. A clear all functionality is provided that resets all the imports and search field as well. 
 
-3. **Import repository with a valid package.json file:** Test cases cover the import action, including the reading and parsing of the `package.json` file and tracking of packages used in the repository. Tests also handle cases where a repository does not contain a valid `package.json` file.
+## Local Storage
 
-## Persistent Storage
-
-The application uses a persistent storage mechanism to save data as seen fit. This ensures that imported repositories and their associated package data are retained even after restarting the application. The choice of persistent storage can vary based on the specific requirements and technical constraints of the project.
+The application uses local storage mechanism to save data. This ensures that imported repositories and their associated package data are retained even after restarting the application.
 
 ## Exception Handling and Logging
 
 The codebase incorporates exception handling and logging mechanisms to ensure robustness and facilitate debugging. Exceptions are caught at appropriate places and logged with relevant information for troubleshooting purposes.
 
-## Rate Limiting
-
-The GitHub API has rate limits on the number of requests made per hour. To avoid exceeding these limits, the application utilizes efficient request management techniques. Caching mechanisms can be implemented to minimize the number of API requests by storing and reusing previously fetched data. Additionally, rate limiting logic can be implemented to automatically throttle requests and prevent API abuse.
 
 ## Directory Structure
 
 The project's directory structure follows a modular approach for better maintainability and scalability. 
+
 
 
