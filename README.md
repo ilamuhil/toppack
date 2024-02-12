@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# React + Tailwind Project - GitHub Repository Search and Import
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React and Tailwind CSS-based web application that allows users to search for GitHub repositories by keyword, view repository details (such as number of stars and forks), import repositories, and track packages used in imported repositories. The application also includes a "Top Packages" page that lists the top 10 packages sourced from the imported repositories.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+1. **Search Repositories:** Users can search for GitHub repositories by keyword. The application makes use of the GitHub REST API to fetch repositories matching the provided keyword.
 
-### `npm start`
+2. **Repository Details:** The search results display information about each repository, including the number of stars and forks.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Import Repository:** Each repository in the search results has an "Import" button. Clicking on this button triggers the import action, which reads the root of the selected repository and scans for the `package.json` file. If the file is present, it is parsed, and all the packages used in the repository are tracked. If the repository does not contain a valid `package.json` file, a message is displayed to the user indicating the absence of the file.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. **Top Packages:** The "Top Packages" page lists the top 10 packages that have been sourced from the imported repositories. This provides an overview of the most commonly used packages.
 
-### `npm test`
+5. **Distinct Marking for Imported Repositories:** On the "Search Repositories" page, if a repository has already been imported, it is distinctly marked with a different font color. This helps users identify repositories that have already been imported.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Implementation
 
-### `npm run build`
+The application is implemented using React for the frontend and Tailwind CSS for styling. It leverages the GitHub REST API for retrieving repository data and the `package.json` files from the imported repositories.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The following functionalities have been implemented along with unit test cases:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Parse package.json file:** Unit tests have been written to ensure correct parsing of the `package.json` file.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Search repositories by keywords:** Unit tests are in place to validate the search functionality and ensure the correct listing of repositories based on keywords.
 
-### `npm run eject`
+3. **Import repository with a valid package.json file:** Test cases cover the import action, including the reading and parsing of the `package.json` file and tracking of packages used in the repository. Tests also handle cases where a repository does not contain a valid `package.json` file.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Persistent Storage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application uses a persistent storage mechanism to save data as seen fit. This ensures that imported repositories and their associated package data are retained even after restarting the application. The choice of persistent storage can vary based on the specific requirements and technical constraints of the project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Exception Handling and Logging
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The codebase incorporates exception handling and logging mechanisms to ensure robustness and facilitate debugging. Exceptions are caught at appropriate places and logged with relevant information for troubleshooting purposes.
 
-## Learn More
+## Rate Limiting
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The GitHub API has rate limits on the number of requests made per hour. To avoid exceeding these limits, the application utilizes efficient request management techniques. Caching mechanisms can be implemented to minimize the number of API requests by storing and reusing previously fetched data. Additionally, rate limiting logic can be implemented to automatically throttle requests and prevent API abuse.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Directory Structure
 
-### Code Splitting
+The project's directory structure follows a modular approach for better maintainability and scalability. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

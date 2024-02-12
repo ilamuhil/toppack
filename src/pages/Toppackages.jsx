@@ -6,13 +6,11 @@ const TopPackages = () => {
     JSON.parse(localStorage.getItem('importedPackages')) || []
   const sortedPackages = importedPackages.sort((a, b) =>
     a.count <= b.count ? 1 : -1
-  )
-
+  ).slice(0,10)
 
   return (
     <div className='p-4'>
       <Header headerText='Packages' linkText='Search Package' linkPath='/' />
-
       <ul className='border rounded bg-gray-100 my-4 p-4'>
         {sortedPackages?.length ? (
           sortedPackages.map(({ name, count }) => (
