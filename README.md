@@ -22,7 +22,7 @@ The following functionalities have been implemented along with unit test cases:
 
 1. **Search repositories by keywords:** User is able to search through the repository and the app performs a debounced search on the github public repositories
 
-2. **Importing repository:** If the search is not returning any results then appropriate message is displayed. Similary appropriate error alerts are displayed if there is no `package.json` file or the file does not contain any dependencies. Loading states are handled as well. Once the imports are complete the import button is disabled and the listed repo changes font color. A clear all functionality is provided that resets all the imports and search field as well. 
+2. **Importing repository:** If the search is not returning any results then appropriate message is displayed. Similary appropriate error alerts are displayed if there is no `package.json` file or the file does not contain any dependencies. Loading states are handled as well. Once the imports are complete the import button is disabled and the listed repo changes font color. Post import the view will scroll to the alert message section for better user experience. A clear all functionality is provided that resets all the imports and search field as well. 
 
 ## Local Storage
 

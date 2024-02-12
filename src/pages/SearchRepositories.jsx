@@ -101,9 +101,15 @@ const SearchRepositories = () => {
     } catch (e) {
       console.error(e)
       if (e?.response?.status === 404)
+      {
         setFeedback('Package.json file not found in this repository', 'error')
+        window.scrollTo(0, 0)
+      }
       else
+      {
         setFeedback('An error occurred while importing the repository', 'error')
+        window.scrollTo(0, 0)
+      }
       return
     }
     const content = JSON.parse(atob(data.content))
@@ -113,9 +119,11 @@ const SearchRepositories = () => {
         'No dependencies were found in the package.json file of this repository',
         'error'
       )
+      window.scrollTo(0, 0)
     } else {
       //* ideally this operation would happen in database
       storeAndUpdateCount(dependencies, repository)
+      window.scrollTo(0, 0)
     }
   }
 
